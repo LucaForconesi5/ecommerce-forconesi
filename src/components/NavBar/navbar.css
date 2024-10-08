@@ -1,0 +1,35 @@
+p {
+    color: #fec007;
+    float: right;
+    font-size: 29px;
+    font-weight: bolder;
+    margin-left: 15px;
+}
+
+ul {
+    color: white;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fec007;
+    text-decoration: underline;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+}
+
