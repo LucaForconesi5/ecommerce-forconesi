@@ -1,8 +1,8 @@
 p {
-    color: #fec007;
+    color: #A8DCE7;
     float: right;
     font-size: 29px;
-    font-weight: bolder;
+    font-weight: lighter;
     margin-left: 15px;
 }
 
@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-    color: #fec007;
+    color: #A8DCE7;
     text-decoration: underline;
 }
 
