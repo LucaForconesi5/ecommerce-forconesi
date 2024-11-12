@@ -20,7 +20,6 @@ a {
 
 a:hover {
     color: #A8DCE7;
-    text-decoration: underline;
 }
 
 .navbar {
@@ -33,3 +32,12 @@ a:hover {
     background-color: black;
 }
 
+.empty-cart {
+    width: 35px;
+    height: 35px;
+}
+
+.icon-cart {
+    width: 35px;
+    height: 35px;
+}

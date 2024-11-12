@@ -7,9 +7,12 @@ import "./itemlistcontainer.css"
 
 const ItemListContainer = ({saludo}) => {
     const [productos, setProductos] = useState ([])
+    const [loading, setLoading] = useState(true)
     const {idCategoria} = useParams ()
     
     useEffect(() => {
+        setLoading (true)
+
         getProductos ()
             .then((dataProductos) => {
                 if(idCategoria) {
@@ -25,16 +28,23 @@ const ItemListContainer = ({saludo}) => {
             console.error(error)
         })
         .finally (() => {
-            console.log("Finalizo la promesa")
+            setLoading(false)
         })
     }, [idCategoria])
 
     const stylesH3 = {color:"#A8DCE7", fontSize: "25px", fontWeight: "lighter", padding: "50px" }
 
+
     return (
         <div className="item-list-container">
             <h3 style={stylesH3}> {saludo} </h3>
-            <ItemList productos={productos} />
+            {
+                loading === true ? (
+                    <div>Cargando...</div>
+                ) : (
+                    <ItemList productos={productos} />
+                )
+            }
         </div>
     )
 }

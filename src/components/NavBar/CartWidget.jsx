@@ -1,11 +1,19 @@
-import iconCart from "../../assets/carts.png"
+import iconCart from "../../assets/carts.png";
+import { useContext } from "react";
+import {CartContext} from "../../context/CartContext";
+
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
+    const {totalQuantity} = useContext (CartContext)
+
+    const quantity = totalQuantity()
+
     return (
-        <div>
-            <img src= {iconCart} alt="" height={35} width={35}/>
-            <p>1</p>
-        </div>
+        <Link to="/cart">
+            <img src= {iconCart} className={quantity === 0 ? "empty-cart" : "icon-cart"}/>
+            <p>{ quantity >= 1 && quantity }</p>
+        </Link>
     )
 }
 
