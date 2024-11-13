@@ -9,8 +9,12 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { CartProvider } from "./context/CartContext"
 import Cart from "./components/Cart/Cart"
+import Final from "./components/Final/Final"
 
+import { ToastContainer} from 'react-toastify';
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -23,11 +27,14 @@ function App() {
           
           <NavBar /> 
 
+            <ToastContainer theme="dark" />
+
             <Routes> 
               <Route path="/" element={<ItemListContainer saludo = {"¡Bienvenidos! eCommerce de Videojuegos en construcción 👷‍♂️🚧"} /> } />
               <Route path="/categoria/:idCategoria" element={<ItemListContainer saludo = {"¡Bienvenidos! eCommerce de Videojuegos en construcción 👷‍♂️🚧"} /> } />
               <Route path="/detail/:idProducto" element={<ItemDetailContainer /> } />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/final" element={<Final />} />
             </Routes>
 
         </CartProvider>

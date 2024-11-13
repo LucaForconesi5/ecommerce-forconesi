@@ -28,6 +28,7 @@ const Cart = () => {
                 <p>Precio parcial: ${productCart.quantity * productCart.precio}</p>
 
                 <button onClick={ () => deleteProductById(productCart.id)}>Borrar producto</button>
+
                 
             </div>
         ))
@@ -35,6 +36,7 @@ const Cart = () => {
 
       <p>Precio total: ${totalPrice()}</p>
       <button onClick={deleteCart}>Borrar carrito</button>
+      <Link to="/final">Terminar mi compra</Link>
     </div>
   )
 }

@@ -1,35 +1,49 @@
 import { useState, useEffect } from "react"
-import { getProductos } from "../../data/data.js"
 import { useParams } from "react-router-dom"
 import ItemList from "./ItemList.jsx"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import db from "../../db/db.js"
 import "./itemlistcontainer.css"
 
 
 const ItemListContainer = ({saludo}) => {
     const [productos, setProductos] = useState ([])
-    const [loading, setLoading] = useState(true)
+    
     const {idCategoria} = useParams ()
+
+    const getProductos = () => {
+        const productosRef = collection (db, "productos")
+        getDocs(productosRef)
+            .then((dataDb) => {
+                //formatear productos
+                const productosDb = dataDb.docs.map((productoDb)=> {
+                    return {id: productoDb.id, ...productoDb.data()}
+                })
+                setProductos(productosDb)
+            })
+    }
+
+    //utilizar un filtrado - categorias
+    const getProductosByCategory = () => {
+        const productosRef = collection (db, "productos")
+        const queryCategories = query(productosRef, where("categoria", "==", idCategoria ))
+        getDocs(queryCategories)
+            .then((dataDb) => {
+                const productosDb = dataDb.docs.map((productoDb) => {
+                    return {id: productoDb.id, ...productoDb.data()}
+                })
+
+                setProductos(productosDb)
+            })
+    }
     
     useEffect(() => {
-        setLoading (true)
-
-        getProductos ()
-            .then((dataProductos) => {
-                if(idCategoria) {
-                    //filtrar data
-                    const filterProductos = dataProductos.filter((producto) => producto.categoria === idCategoria )
-                    setProductos(filterProductos)
-                } else {
-                    //sino, guarda los productos
-                    setProductos(dataProductos)
-            }
-        })
-        .catch( (error) => {
-            console.error(error)
-        })
-        .finally (() => {
-            setLoading(false)
-        })
+        if (idCategoria){
+            getProductosByCategory()
+        }else{
+            getProductos()
+        }
+        
     }, [idCategoria])
 
     const stylesH3 = {color:"#A8DCE7", fontSize: "25px", fontWeight: "lighter", padding: "50px" }
@@ -38,13 +52,9 @@ const ItemListContainer = ({saludo}) => {
     return (
         <div className="item-list-container">
             <h3 style={stylesH3}> {saludo} </h3>
-            {
-                loading === true ? (
-                    <div>Cargando...</div>
-                ) : (
-                    <ItemList productos={productos} />
-                )
-            }
+           
+            <ItemList productos={productos} />
+             
         </div>
     )
 }
