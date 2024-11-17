@@ -26,7 +26,7 @@ const NavBar = () => {
             </ul>
 
             <Link to="/" className="brand">
-                <h2>PlayZone</h2>
+                <h1>PlayZone</h1>
             </Link>
 
             <CartWidget />

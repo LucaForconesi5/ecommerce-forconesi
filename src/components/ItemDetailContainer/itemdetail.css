@@ -22,20 +22,20 @@
   
   .item-detail-title {
     font-size: 24px;
-    color: #333;
+    color: #A8DCE7;
     margin-bottom: 10px;
   }
   
   .item-detail-price {
     font-size: 28px;
-    color: #00a650;
+    color: #A8DCE7;
     font-weight: bold;
     margin: 10px 0;
   }
   
   .item-detail-description {
     font-size: 16px;
-    color: #666;
+    color: white;
     line-height: 1.5;
     margin: 15px 0;
   }
@@ -56,3 +56,5 @@
   .item-detail-button:hover {
     background-color: #2968c8;
   }
+
+  

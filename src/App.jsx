@@ -30,7 +30,7 @@ function App() {
             <ToastContainer theme="dark" />
 
             <Routes> 
-              <Route path="/" element={<ItemListContainer saludo = {"¡Bienvenidos! eCommerce de Videojuegos en construcción 👷‍♂️🚧"} /> } />
+              <Route path="/" element={<ItemListContainer saludo = {"¡Bienvenidos a PlayZone!"} /> } />
               <Route path="/categoria/:idCategoria" element={<ItemListContainer saludo = {"¡Bienvenidos! eCommerce de Videojuegos en construcción 👷‍♂️🚧"} /> } />
               <Route path="/detail/:idProducto" element={<ItemDetailContainer /> } />
               <Route path="/cart" element={<Cart />} />

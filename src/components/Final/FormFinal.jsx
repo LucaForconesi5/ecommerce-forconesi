@@ -11,6 +11,9 @@ const FormFinal = ({dataForm, handleChangeInput, handleSubmitForm}) => {
       <label>Email</label>
       <input type="email" name="email" value={dataForm.email} onChange={handleChangeInput}/>
 
+      <label>Confirmar Email</label>
+      <input type="email" name="emailConfirmation" value={dataForm.emailConfirmation} onChange={handleChangeInput} />
+
       <button type="submit">Enviar mi orden</button>
       </form>
     

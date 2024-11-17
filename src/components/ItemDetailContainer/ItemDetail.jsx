@@ -28,7 +28,8 @@ const ItemDetail = ({ producto }) => {
         <h1 className="item-detail-title">{producto.nombre}</h1>
         <p className="item-detail-price">Precio: ${producto.precio}</p>
         <p className="item-detail-description">{producto.descripcion}</p>
-        <button className="item-detail-button">Comprar ahora</button>
+        
+        <div className="prueba">
         {
           showItemCount === true ? (
             <ItemCount stock={producto.stock} addProduct={addProduct}/>
@@ -36,6 +37,7 @@ const ItemDetail = ({ producto }) => {
               <Link to="/cart">Terminar mi compra</Link>
           )
         }
+        </div>
         
       </div>
     </div>

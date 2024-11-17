@@ -7,6 +7,7 @@ import db from "../../db/db"
 import { Link } from "react-router-dom"
 import validateForm from "../../utils/validateForm.js"
 import { toast } from "react-toastify"
+import './final.css'
 
 
 const Final = () => {
@@ -14,6 +15,7 @@ const Final = () => {
     fullname: "",
     phone: "",
     email: "",
+    emailConfirmation: "",
   })
   const [idOrder, setIdOrder] = useState(null)
   const {cart, totalPrice, deleteCart} = useContext(CartContext)
@@ -25,6 +27,12 @@ const Final = () => {
 
   const handleSubmitForm = async(event) => {
     event.preventDefault()
+
+    const validation = await validateForm(dataForm);
+    if (validation.status === "error") {
+      toast.error(validation.message);
+      return; 
+    }
 
     const order = {
       buyer: {...dataForm},
@@ -59,15 +67,17 @@ const Final = () => {
   }
 
   return (
-    <div>
+    <div className="final-container">
       {
         idOrder === null ? (
+          <div className="form-container">
           <FormFinal 
         dataForm={dataForm} 
         handleChangeInput={handleChangeInput} 
         handleSubmitForm={handleSubmitForm}/>
+        </div>
         ) : (
-          <div>
+          <div className="confirmation-container">
             <h2>Su orden se subió correctamente! 😁</h2>
             <p>Porfavor guarde su nro de seguimiento: {idOrder}</p>
             <Link to="/">Volver al inicio</Link>
